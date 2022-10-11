@@ -10,7 +10,7 @@ import locale from "react-json-editor-ajrm/locale/en";
 
 function AdvancedPage () {
     
-    const [status, setStatus] = useState(0);
+  const [status, setStatus] = useState(0);
   const [time, setTime] = useState(0);
   const [size, setSize] = useState(0);
   const [response, setResponse] = useState({});
@@ -62,7 +62,7 @@ function AdvancedPage () {
       method: data.method,
       params: keyValuePairsToObjects(data.query_data),
       headers: keyValuePairsToObjects(data.header_data),
-      dataJson,
+      data: dataJson,
       validateStatus: () => true,
     })
       .catch((e) =>

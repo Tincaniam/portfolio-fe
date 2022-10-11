@@ -42,7 +42,7 @@ export const EditProjectPage = ({projectToEdit}) => {
                 value={status}
                 onChange={e => setStatus(e.target.value)}
                 className="projectField" >
-                    <option selected value="In Progress">In Progress</option>
+                    <option value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>
             </select>
             <input
@@ -64,7 +64,7 @@ export const EditProjectPage = ({projectToEdit}) => {
                 onChange={e => setDate(e.target.value)}
                 className="projectField" />
 
-            <button class="button-medium"
+            <button className="button-medium"
                 onClick={editProject}
             >Save</button>
         </div>

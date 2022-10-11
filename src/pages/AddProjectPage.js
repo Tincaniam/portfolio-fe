@@ -21,6 +21,7 @@ export const AddProjectPage = () => {
         },
         });
         if (response.status === 201){
+            console.log(newProject);
             alert("Successfully added the project.");
         } else {
             alert(`Failed to add the project, status code = ${response.status}`);
@@ -41,7 +42,7 @@ export const AddProjectPage = () => {
                 value={status}
                 onChange={e => setStatus(e.target.value)}
                 className="projectField" >
-                    <option selected value="In Progress">In Progress</option>
+                    <option defaultValue={"In Progress"} value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>
             </select>   
             <input
@@ -63,7 +64,7 @@ export const AddProjectPage = () => {
                 onChange={e => setDate(e.target.value)}
                 className="projectField" />
 
-            <button class="button-medium"
+            <button className="button-medium"
                 onClick={addProject}
             >Add</button>
         </div>
