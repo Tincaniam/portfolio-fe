@@ -94,7 +94,7 @@ function AdvancedPage () {
         <div>
           <Formik
             initialValues={{
-              url: "http://localhost:8000/projects",
+              url: "https://portfolio.tincaniam.com/projects",
               query_data: [{}],
               header_data: [{}],
               method: "GET",
