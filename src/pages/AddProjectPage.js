@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactTooltip from "react-tooltip";
 import { useHistory } from "react-router-dom";
 
 export const AddProjectPage = () => {
@@ -64,6 +65,13 @@ export const AddProjectPage = () => {
                 onChange={e => setDate(e.target.value)}
                 className="projectField" />
 
+            <button className="button-medium"
+                onClick={addProject}
+                data-tip data-for="generateTip"
+            >Give me a project idea</button>
+            <ReactTooltip delayShow={1000} id="generateTip" place="bottom" effect="solid">
+            Call an API that generates a new project idea for you! Get inspired!
+            </ReactTooltip>
             <button className="button-medium"
                 onClick={addProject}
             >Add</button>

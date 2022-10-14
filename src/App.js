@@ -104,13 +104,7 @@ function App() {
         </AppBar>
 
         <div className="App-header">
-        <button className="button-medium"
-                onClick={projectToEdit}
-                data-tip data-for="generateTip"
-            >Give me a project idea</button>
-        <ReactTooltip delayShow={1000} id="generateTip" place="bottom" effect="solid">
-          Call an API that generates a new project idea for you! Get inspired!
-        </ReactTooltip>
+          <br></br>
           <Route path="/" exact>
             <HomePage setProjectToEdit={setProjectToEdit}/>
           </Route>
