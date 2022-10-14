@@ -121,6 +121,8 @@ function App() {
             <EditProjectPage projectToEdit={projectToEdit}/>
           </Route>
           </div>
+          <br></br>
+          <br></br>
         <footer>
         <p>&copy; 2022 Matt Tinnel</p>
         </footer>
