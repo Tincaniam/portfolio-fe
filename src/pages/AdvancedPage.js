@@ -3,6 +3,7 @@ import { Formik, Form, Field, FieldArray } from "formik";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "@mui/material";
+import { Link } from 'react-router-dom';
 import { Tab, Tabs } from "react-bootstrap";
 import prettyBytes from "pretty-bytes";
 import JSONInput from "react-json-editor-ajrm";
@@ -90,6 +91,9 @@ function AdvancedPage () {
 
   return (
     <>
+    <h4>Advanced API Access</h4>
+    <h6>For the tinkerers!</h6>
+    <p style={{ fontSize: "medium"}}>This is an advanced section with direct access to the API. Not feeling adventerous? No worries! Head back <Link to="/">Home</Link> with easy ways to manage your projects!</p>
       <div className="p-4">
         <div>
           <Formik

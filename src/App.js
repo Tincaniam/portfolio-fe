@@ -82,7 +82,7 @@ function App() {
               </IconButton>
             </Link>
             <ReactTooltip delayShow={1000} id="advancedTip" place="top" effect="solid">
-              For the tinkerers!
+              Advanced options. For the tinkerers!
             </ReactTooltip>
             <Link to="/add-project">
               <IconButton
@@ -102,7 +102,6 @@ function App() {
             </ReactTooltip>
           </Toolbar>
         </AppBar>
-
         <div className="App-header">
           <br></br>
           <Route path="/" exact>

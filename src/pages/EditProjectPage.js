@@ -22,15 +22,17 @@ export const EditProjectPage = ({projectToEdit}) => {
         });
         if (response.status === 200){
             alert("Successfully edited the project.");
+            history.push("/");
         } else {
-            alert(`Failed to edit the project, status code = ${response.status}`);
+            alert(`Failed to edit the project, status code = ${response.status}. Please note, all fields but link are required, and date must be in the form MM-DD-YY.`);
         }
-        history.push("/");
     };
+    
 
     return (
         <div>
             <h2>Edit Project</h2>
+            <p style={{fontSize: 17}}>Edit your existing project!</p>
             <input
                 type="text"
                 placeholder="Enter name here..."
