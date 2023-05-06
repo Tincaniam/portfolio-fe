@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { CCard} from '@coreui/react';
 import { useHistory } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export const EditProjectPage = ({projectToEdit}) => {
 
@@ -8,6 +10,8 @@ export const EditProjectPage = ({projectToEdit}) => {
     const [description, setDescription] = useState(projectToEdit.description);
     const [link, setLink] = useState(projectToEdit.link);
     const [date, setDate] = useState(projectToEdit.date);
+    const [emptyFields, setEmptyFields] = useState([]);
+    
 
     const history = useHistory();
 
@@ -20,30 +24,40 @@ export const EditProjectPage = ({projectToEdit}) => {
             'Content-Type': 'application/json',
         },
         });
+
+        if (!response.ok) {
+            const json = await response.json();
+            alert(json.error);
+            setEmptyFields(json.emptyFields);
+        }
         if (response.status === 200){
             alert("Successfully edited the project.");
             history.push("/");
-        } else {
-            alert(`Failed to edit the project, status code = ${response.status}. Please note, all fields but link are required, and date must be in the form MM-DD-YY.`);
         }
     };
     
 
     return (
         <div>
+            <CCard style={{backgroundColor:'#4D4D4D', minWidth:'50%', margin:'3%', padding:'3%'}}>
             <h2>Edit Project</h2>
-            <p style={{fontSize: 17}}>Edit your existing project!</p>
+            <p style={{fontSize: 17}}>
+            Edit your existing projects to your portfolio! Need inspiration? Check out the "Give me a project idea" when you <Link to="/add-project"><button className="button-small">Add a project!</button></Link></p>
+            </CCard>
+            <CCard style={{backgroundColor:'#4D4D4D', margin:'3%', padding:'3%'}}>
             <input
                 type="text"
                 placeholder="Enter name here..."
                 value={name}
                 onChange={e => setName(e.target.value)}
-                className="projectField" />
+                className={emptyFields.includes("name") ? "error" : "projectField"}
+                />
             <select
                 type="text"
                 value={status}
                 onChange={e => setStatus(e.target.value)}
-                className="projectField" >
+                className={emptyFields.includes("text") ? "error" : "projectField"}
+                >
                     <option value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>
             </select>
@@ -52,7 +66,8 @@ export const EditProjectPage = ({projectToEdit}) => {
                 value={description}
                 placeholder="Enter description here..."
                 onChange={e => setDescription(e.target.value)}
-                className="projectField" />
+                className={emptyFields.includes("description") ? "error" : "projectField"}
+                />
             <input
                 type="url"
                 value={link}
@@ -64,11 +79,14 @@ export const EditProjectPage = ({projectToEdit}) => {
                 value={date}
                 placeholder="MM-DD-YY"
                 onChange={e => setDate(e.target.value)}
-                className="projectField" />
+                className={emptyFields.includes("date") ? "error" : "projectField"}
+                />
 
             <button className="button-medium"
+            style={{maxWidth:'20%', marginLeft: '40%', padding: '2%'}}
                 onClick={editProject}
             >Save</button>
+            </CCard>
         </div>
     );
 }
